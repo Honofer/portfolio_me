@@ -7,7 +7,6 @@ import Experience from "./components/homepage/experience";
 import HeroSection from "./components/homepage/hero-section";
 import Projects from "./components/homepage/projects";
 import Skills from "./components/homepage/skills";
-
 async function getData() {
   const res = await fetch(`https://dev.to/api/articles?username=${personalData.devUsername}`)
 
@@ -23,18 +22,28 @@ async function getData() {
 };
 
 export default async function Home() {
-  const blogs = await getData();
+  const blogs = [];
+
+  console.log("✅ Page loaded - SSR check running");
 
   return (
-    <div suppressHydrationWarning >
+    <div suppressHydrationWarning>
       <HeroSection />
+      {console.log("✅ HeroSection OK")}
       <AboutSection />
+      {console.log("✅ About OK")}
       <Experience />
+      {console.log("✅ Experience OK")}
       <Skills />
+      {console.log("✅ Skills OK")}
       <Projects />
+      {console.log("✅ Projects OK")}
       <Education />
+      {console.log("✅ Education OK")}
       <Blog blogs={blogs} />
+      {console.log("✅ Blog OK")}
       <ContactSection />
+      {console.log("✅ Contact OK")}
     </div>
   )
 };

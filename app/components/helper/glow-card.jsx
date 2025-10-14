@@ -4,6 +4,9 @@ import { useEffect } from 'react';
 
 const GlowCard = ({ children , identifier}) => {
   useEffect(() => {
+    // Vérifier si document est disponible (côté client uniquement)
+    if (typeof document === 'undefined') return;
+    
     const CONTAINER = document.querySelector(`.glow-container-${identifier}`);
     const CARDS = document.querySelectorAll(`.glow-card-${identifier}`);
 
